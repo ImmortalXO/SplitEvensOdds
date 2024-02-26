@@ -163,6 +163,18 @@ public:
 				evensList.count++;
 				current = tmp;
 				evensList.last->link = nullptr;
+			}
+			else {
+				if (oddsList.count() == 0) {
+					oddsList.first = current;
+				}
+				else {
+					oddsList.last->link = current;
+				}
+				oddsList.last = current;
+				oddsList.count++;
+				current = tmp;
+				oddsList.last->link = current;
 			};
 		};
 		list->first = nullptr;
