@@ -107,9 +107,8 @@ void unorderedLinkedList<Type>::deleteNode(const Type& deleteItem)
 		else //search the list for the node with the given info
 		{
 			found = false;
-			trailCurrent = this->first; //set trailCurrent to point to the first
-			node
-				current = this->first->link; //set current to point to the second node
+			trailCurrent = this->first; //set trailCurrent to point to the node
+			current = this->first->link; //set current to point to the second node
 			while (current != nullptr && !found)
 			{
 				if (current->info != deleteItem)
@@ -145,27 +144,26 @@ public:
 	// Postcondition: evensList consists of even integers.
 	// oddsList consists of odd integers.
 	// The original list is empty.
-
-	void splitEvensOddsList(intLinkedList& evensList, intLinkedList& oddsList) {
+};
+	template <class Type>
+	void intLinkedList<Type>::splitEvensOddsList(intLinkedList<Type>& evensList, intLinkedList<Type>& oddsList) {
 		nodeType<Type>* current;
-		nodeType<Type>* tmp;
 		current = this->first;
 		while (current != nullptr) {
 			if (current->info % 2 == 0) {
-				tmp = current->link;
-				if (evensList.count() == 0) {
+				if (evensList.count == 0) {
 					evensList.first = current;
 				}
 				else {
-					evensList->last->link = current;
-				};
+					evensList.last->link = current;
+				}
 				evensList.last = current;
 				evensList.count++;
-				current = tmp;
+				current = current->link;
 				evensList.last->link = nullptr;
 			}
 			else {
-				if (oddsList.count() == 0) {
+				if (oddsList.count == 0) {
 					oddsList.first = current;
 				}
 				else {
@@ -173,20 +171,12 @@ public:
 				}
 				oddsList.last = current;
 				oddsList.count++;
-				current = tmp;
-				oddsList.last->link = current;
-			};
-		};
-		list->first = nullptr;
-		list->last = nullptr;
-		list->count = 0;
-	};
-	// Function to rearrange the nodes of the linked list so
-	// that evensList consists of even integers and oddsList
-	// consists of odd integers.
-	// Postcondition: evensList consists of even integers.
-	// oddsList consists of odd integers.
-	// The original list is empty.
-	//
-};
+				current = current->link;
+				oddsList.last->link = nullptr;
+			}
+		}
+		this->first = nullptr;
+		this->last = nullptr;
+		this->count = 0;
+	}
 #endif
