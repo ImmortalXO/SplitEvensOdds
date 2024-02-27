@@ -143,7 +143,7 @@ public:
 	// consists of odd integers.
 	// Postcondition: evensList consists of even integers.
 	// oddsList consists of odd integers.
-	// The original list is empty.
+	// The original list is empty
 };
 	template <class Type>
 	void intLinkedList<Type>::splitEvensOddsList(intLinkedList<Type>& evensList, intLinkedList<Type>& oddsList) {
